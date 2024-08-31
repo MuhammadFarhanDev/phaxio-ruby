@@ -290,7 +290,7 @@ class WebhookController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    signature = request.headers['X-Phaxio-Signature']  
+    signature = request.headers['X-Phaxio-Signature']
     Phaxio.webhook_token = 'YOUR WEBHOOK TOKEN HERE'
     url = request.original_url
 
@@ -308,11 +308,11 @@ class WebhookController < ApplicationController
     end
   end
 
-  def webhook_params 
+  def webhook_params
     params.permit(:success, :is_test, :direction, :fax, :metadata, :event_type, :message)
   end
 
-  def file_params 
+  def file_params
     if params[:file]
       [{ :name => 'file', :tempfile => params[:file].tempfile }]
     end
@@ -327,3 +327,12 @@ end
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+## Additional Guidelines
+
+```
+Code Style: Please adhere to the project's coding conventions and style guides.
+Testing: Ensure that your changes are well-tested and that all existing tests pass.
+Documentation: Update any relevant documentation if your changes impact it.
+```
